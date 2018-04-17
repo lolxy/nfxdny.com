@@ -1,0 +1,60 @@
+{:hook('footer')}
+<div class="footer_bg">
+   <div class="footer">
+   <?php
+		$effected_id="navi3";
+	  	$filetpl="<a href='\$href' target='\$target'>\$label</a>";
+	  	$foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' data-toggle='dropdown'>\$label <b class='caret'></b></a>";
+	  	$ul_class="dropdown-menu" ;
+	  	$li_class="" ;
+	  	$style="nav";
+	  	$showlevel=6;
+	  	$dropdown='dropdown';
+	  	echo sp_get_menu("5",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown);
+	?>
+   <!-- 
+<a href="/" title="网站首页">网站首页</a> | 
+<a href="{:leuu('page/index',array('id'=>2))}" title="农庄简介">农庄简介</a> | 
+<a href="{:leuu('page/index',array('id'=>3))}" title="农庄文化">农庄文化</a> | 
+<a href="{:leuu('list/index',array('id'=>3))}" title="农庄摄影">农庄摄影</a> | 
+<a href="{:leuu('list/index',array('id'=>4))}" title="农庄动态">农庄动态</a> | 
+<a href="{:leuu('list/index',array('id'=>12))}" title="水果品种">水果品种</a> | 
+<a href="{:leuu('page/index',array('id'=>5))}" title="联系我们">联系我们</a> -->
+   <br>
+版权所有：{$site_copyright} 联系人：{$lianxiren} 电话：{$shouji} <br>
+地址：{$address} {$site_icp}  友情链接：<php>$links=sp_getlinks();</php>
+		<foreach name="links" item="vo">
+			<a href="{$vo.link_url}" target="{$vo.link_target}" title="{$vo.link_name}">{$vo.link_name}</a> 
+		</foreach>
+</div>
+</div>
+<style>
+.right-fixed{position:fixed;width: 187px;height: 160px;right:-158px;top: 50%;margin-top: -80px;}
+.right-fixed .gzhbox{width:28px;height: 118px;border: 1px solid #22AC38;color:#ffffff;border-right:none;background-color: #22AC38;text-align: center; vertical-align:middle;border-radius:10px 0 0 10px;float: left;cursor:pointer;margin-top: 19px;}
+.right-fixed .gzhbox p{display:inline-block;width:20px;height: auto;letter-spacing: 2px;line-height:17px;height: 140px;margin-top:9px;margin-left:8px;font-size: 12px;}
+.right-fixed .gzhboxbox{width:149px;height:149px;overflow: hidden;padding:4px;border: 1px solid #22AC38;float: left;background-color: #fff;border-right: none;}
+.right-fixed .gzhboxbox img{max-width:100%}
+
+.ewmbox{width: 100%;overflow: hidden;}
+.ewmbox .a,.ewmbox .b{width:46%;float: left;box-sizing:border-box;margin:2%;overflow: hidden;position:relative;}
+.ewmbox p{position: absolute;left: 0;bottom:0px;height: 40px;line-height: 40px;font: 12px;text-align: center;background:rgba(0,0,0,0.4);color:#ffffff;z-index:5;width: 100%;}
+.ewmbox img{max-width: 100%}
+</style>
+<div class="right-fixed">
+	<div class="gzhbox"><p>扫一扫有惊喜</p></div>
+    <div class="gzhboxbox"><img src="__TMPL__Public/images/weixin.png" alt=""></div>
+</div>
+<script>
+$('.right-fixed .gzhbox').click(function(){
+	//$('.right-fixed').animate({'right':'0px'});
+	var obj=$('.right-fixed');
+	if(obj.hasClass('active')){
+		obj.removeClass('active');
+		obj.animate({'right':'-158px'});
+		}else{
+			obj.addClass('active');
+			obj.animate({'right':'0px'});
+			}
+	});
+</script>
+{$site_tongji}

@@ -1,0 +1,97 @@
+
+*{ margin:0; padding:0;}
+
+html { overflow-x:hidden; }
+#proBanner { width: 100%; height:519px; margin: 0 auto; overflow:hidden; }
+/*
+	AnythingSlider v1.7+ Default (base) theme
+	By Chris Coyier: /css-tricks.com
+	with major improvements by Doug Neiner: /pixelgraphics.us/
+	based on work by Remy Sharp: /jqueryfordesigners.com/
+*/
+
+/*****************************
+  SET DEFAULT DIMENSIONS HERE
+ *****************************/
+/* change the ID to match your slider */
+#slider { width: 700px; height: 390px; list-style: none; /* Prevent FOUC (see FAQ page) and keep things readable if javascript is disabled */ overflow-y: auto; overflow-x: hidden; }
+/*****************
+  SET COLORS HERE
+ *****************/
+/**** Default state (no keyboard focus) ****/
+/* slider window - top & bottom borders, default state */
+div.anythingSlider .anythingWindow { border-top: 0px solid #777; border-bottom: 0px solid #777; }
+/* Navigation buttons, default state */
+ div.anythingSlider .anythingControls ul a { background:#777; color: #000; }
+div.anythingSlider .anythingControls ul a.cur { background:#167300!important; color:#fff; border:#167300 1px solid; }/*方块按钮边框*/
+/* start-stop button, stopped, default state */
+div.anythingSlider .start-stop { color: #fff; }
+/* start-stop button, playing, default state */
+div.anythingSlider .start-stop.playing { }
+/* start-stop button, default hovered text color (when visible) */
+div.anythingSlider .start-stop:hover, div.anythingSlider .start-stop.hover { color: #ddd; }
+/**** Active State (slider has keyboard focus) ****/
+/* slider window - top & bottom borders, active state */
+div.anythingSlider.activeSlider .anythingWindow { border-color: #fff; }
+/* Navigation buttons, active state */
+div.anythingSlider.activeSlider .anythingControls ul a.cur, div.anythingSlider.activeSlider .anythingControls ul a { background-color:#fff; }
+/* start-stop button, stopped, active state */
+div.anythingSlider .start-stop { color: #fff; }
+/* start-stop button, playing, active state */
+div.anythingSlider .start-stop.playing { background:url(../images/billboard_pause_over.gif)!important; }
+/* start-stop button, active slider hovered text color (when visible) */
+div.anythingSlider .start-stop:hover, div.anythingSlider .start-stop.hover { color: #fff; }
+/***********************
+  COMMON SLIDER STYLING
+ ***********************/
+/* Overall Wrapper: 45px right & left padding for the arrows, 28px @ bottom for navigation */
+div.anythingSlider { display: block; margin: 0 auto; overflow: visible !important; /* needed for Opera and Safari */ position: relative; z-index:10; padding: 0 0px 0px 0px; }
+/* anythingSlider viewport window */
+div.anythingSlider .anythingWindow { overflow: hidden; position: relative; width: 100%; height: 100%; }
+/* anythingSlider base (original element) */
+.anythingBase { background: transparent; list-style: none; position: absolute; overflow: visible !important; top: 0; left: 0; margin: 0; padding: 0; }
+/* all panels inside the slider */
+.anythingBase .panel { background: transparent; display: block; overflow: hidden; float: left; padding: 0; margin: 0; }
+.anythingBase .panel a { display:block; width:100%; height:466px; }
+.anythingBase .panel.vertical { float: none; }
+/* Navigation Arrows */
+div.anythingSlider .arrow_pro { top: 50%; position: absolute; display: block; width:45px; height:140px; margin: -70px 0 0 0;}
+
+
+
+
+div.anythingSlider .arrow_pro a { display: block; height: 140px; /* half height of image */ width: 45px; text-align: center; outline: 0; background:url(../images/default.png) no-repeat; _background: url(../images/default.gif) no-repeat; }
+
+/* hide text, target the span so IE7 doesn't text-indent the link */
+div.anythingSlider .arrow_pro a span { display: block; visibility: hidden; }
+/* back arrow */
+div.anythingSlider .back { left: 0; }
+div.anythingSlider .back a { background-position: left top; }
+div.anythingSlider .back a:hover, div.anythingSlider .back a.hover { background-position: left -140px; }
+div.anythingSlider .back.disabled { display: none; } /* disabled arrows, hide or reduce opacity: opacity: .5; filter: alpha(opacity=50); */
+/* forward arrow */
+div.anythingSlider .forward { right: 0; }
+div.anythingSlider .forward a { background-position: right top; }
+div.anythingSlider .forward a:hover, div.anythingSlider .forward a.hover { background-position: right -140px; }
+div.anythingSlider .forward.disabled { display: none; } /* disabled arrows, hide or reduce opacity: opacity: .5; filter: alpha(opacity=50); */
+/* Navigation Links */
+div.anythingSlider .anythingControls { outline: 0; display: none; height:0px; position:relative; z-index:1; }
+div.anythingSlider .anythingControls ul { margin: 0; padding: 0; position:absolute; right:80px; bottom:20px; }
+div.anythingSlider .anythingControls ul li { display: inline; }
+div.anythingSlider .anythingControls ul a { font:10px Verdana; display: inline-block; text-decoration: none; height: 12px; line-height:12px; padding:0px 3px; margin: 0 5px 0 0; background:#fff; text-align: center; outline: 0; border:#167300 1px solid; }/*方块按钮边框*/
+div.anythingSlider .anythingControls ul a:hover { background-image: none; }
+/* Navigation size window */
+div.anythingSlider .anythingControls .anythingNavWindow { overflow: hidden; float: left; }
+/* slider autoplay right-to-left, reverse order of nav links to look better */
+div.anythingSlider.rtl .anythingControls ul a { float: right; } /* reverse order of nav links */
+div.anythingSlider.rtl .anythingControls ul { float: left; }    /* move nav link group to left */
+div.anythingSlider.rtl .anythingWindow { direction: ltr; unicode-bidi: bidi-override; }
+/* div.anythingSlider.rtl .start-stop { float: right; } */ /* move start/stop button - in case you want to switch sides */
+
+/* Autoplay Start/Stop button */
+div.anythingSlider .start-stop { background:url(../images/billboard_play_over.gif); width: 16px; height:16px; text-align: center; text-decoration: none; position:absolute; right:60px; bottom:20px; z-index: 100; outline: 0; }
+/* hide cell shading on hover - makes the button appear to come forward */
+div.anythingSlider .start-stop:hover, div.anythingSlider .start-stop.hover { background-image:url(../images/billboard_play_over.gif); }
+/* probably not necessary, but added just in case */
+div.anythingSlider, div.anythingSlider .anythingWindow, div.anythingSlider .anythingControls ul a, div.anythingSlider .arrow_pro a, div.anythingSlider .start-stop { transition-duration: 0; -o-transition-duration: 0; -moz-transition-duration: 0; -webkit-transition-duration: 0; }
+.start-stop span { display:none; }

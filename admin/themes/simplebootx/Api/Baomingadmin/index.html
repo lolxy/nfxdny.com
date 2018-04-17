@@ -1,0 +1,44 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('baomingadmin/index')}">全部报名</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th width="50">ID</th>
+						<th width="200">活动主题</th>
+                        <th width="100">报名人数</th>
+                        <th width="100">入驻时间</th>
+                        <th width="100">联系电话</th>
+                        <th width="100">联系人</th>
+						<th width="120">报名时间</th>
+						<th width="120">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="baomingmsgs" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.active_name}</td>
+                        <td>{$vo.bm_num}</td>
+                    <td>{$vo.bm_date}</td>
+                    <td>{$vo.bm_tel}</td>
+                    <td>{$vo.bm_name}</td>
+						<td>{$vo.createtime}</td>
+						<td>
+							<a href="{:U('baomingadmin/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$Page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js?"></script>
+</body>
+</html>
